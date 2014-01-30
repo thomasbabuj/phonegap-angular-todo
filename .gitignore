@@ -1,0 +1,6 @@
+*.keystore
+*.sw*
+platforms/^.*
+
+# OSX
+.DS_Store
