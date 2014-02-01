@@ -23,19 +23,19 @@
 			<!-- Center content starts -->
 			<pane side-menu-content>
 				<header class="bar bar-header bar-dark">
-					<h1 class="title">To do</h1>
-					<!-- New Task button -->
-					<button class="button button-icon" ng-click="editTasks()">
-						<i class="icon ion-edit"></i>
+					<button class="button button-icon" ng-click="toggleProjects()">
+						<i class="icon ion-navicon"></i>
 					</button>
-					<button class="button button-icon" ng-click="newTask()">
-						<i class="icon ion-compose"></i>
+					<h1 class="title">{{activeProject.title}}</h1>
+					<!-- New Task Button -->
+					<button class="button button-clear" ng-click="newTask()">
+						New
 					</button>
 				</header>
-				<content has-header="true">
+				<content has-header="true" scroll="false">
 					<!-- out list and list items -->
 					<list>
-						<item ng-repeat="task in tasks">
+						<item ng-repeat="task in activeProject.tasks">
 							{{task.title}}
 						</item>
 					</list>
@@ -46,7 +46,17 @@
 			<side-menu side="left">
 				<header class="bar bar-header bar-dark">
 					<h1 class="title">Projects</h1>
+					<button class="button button-icon" ng-click="newProject()">
+						<i class="icon ion-plus"></i>
+					</button>
 				</header>
+				<content has-header="true" scroll="false">
+					<list>
+						<item ng-repeat="project in projects" ng-click="selectProject(project)" ng-class="{active: activeProject == project}">
+						{{project.title}}
+						</item>
+					</list>
+				</content>
 			</side-menu>
 			<!-- Left menu ends -->
 		</side-menus>
