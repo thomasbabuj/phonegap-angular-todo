@@ -23,7 +23,14 @@
 			<!-- Center content starts -->
 			<pane side-menu-content>
 				<header class="bar bar-header bar-dark">
-					<h1 class="title">Todo</h1>
+					<h1 class="title">To do</h1>
+					<!-- New Task button -->
+					<button class="button button-icon" ng-click="editTasks()">
+						<i class="icon ion-edit"></i>
+					</button>
+					<button class="button button-icon" ng-click="newTask()">
+						<i class="icon ion-compose"></i>
+					</button>
 				</header>
 				<content has-header="true">
 					<!-- out list and list items -->
@@ -43,5 +50,32 @@
 			</side-menu>
 			<!-- Left menu ends -->
 		</side-menus>
+
+		<!-- Creating task starts -->
+		<script id="new-task.html" type="text/ng-template">
+			<div class="modal">
+			<!-- Modal header bar starts -->
+				<header class="bar bar-header bar-secondary">
+					<h1 class="title">New Task</h1>
+					<button class="button button-clear button-positive" ng-click="closeNewTask()">Cancel</button>
+				</header>
+				<!-- Modal content area starts -->
+				<content has-header="true">
+					<form ng-submit="createTask(task)">
+						<div class="list">
+							<label class="item item-input">
+								<input type="text" placeholder="What do you need to do?" ng-model="task.title">
+							</label>
+						</div>
+						<div class="padding">
+							<button type="submit" class="button button-back button-positive">Create Task</button>
+						</div>
+					</form>
+				</content>
+				<!-- Modal content ends -->
+			<!-- Model header ends -->
+			</div>
+		</script>
+		<!-- Creating task ends -->
 	</body>
 </html>
