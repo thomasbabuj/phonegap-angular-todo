@@ -17,7 +17,7 @@
 
 		<script src="js/app.js"></script>
 	</head>
-	<body ng-app="todo">
+	<body ng-app="todo" ng-controller="TodoCtrl">
 		<!-- Adding Side Menus in Ionic -->
 		<side-menus>
 			<!-- Center content starts -->
@@ -25,7 +25,14 @@
 				<header class="bar bar-header bar-dark">
 					<h1 class="title">Todo</h1>
 				</header>
-				<content has-header="true"></content>
+				<content has-header="true">
+					<!-- out list and list items -->
+					<list>
+						<item ng-repeat="task in tasks">
+							{{task.title}}
+						</item>
+					</list>
+				</content>
 			</pane>
 			<!-- Center content ends -->
 			<!-- Left menu starts -->
